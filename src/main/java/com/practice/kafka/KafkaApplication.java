@@ -1,4 +1,4 @@
-package com.pratice.kafka;
+package com.practice.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
