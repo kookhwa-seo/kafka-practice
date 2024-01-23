@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import com.practice.kafka.component.KafkaConsumer;
 import com.practice.kafka.component.KafkaProducer;
 import com.practice.kafka.dto.PracticeDTO;
-import com.practice.kafka.entity.Practice;
 import com.practice.kafka.repository.PracticeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -64,11 +63,10 @@ class KafkaConsumerTest {
         // 모든 메시지를 수신할 때까지 기다리기
         consumer.getLatch().await(10, TimeUnit.SECONDS);
         stopWatch.stop();
-        for (Practice practice : practiceRepository.findAll()) {
-            log.info("received data save = {}", practice.toString());
-        }
         log.info("time : " + stopWatch.getTotalTimeSeconds() + " seconds.");
         log.info("############# kafka test #############");
-        log.info("payload size >>> " + consumer.getPayloads().size());
+        //Thread.sleep(1000*180);
+        int size = practiceRepository.findAll().size();
+        log.info(">>> size : " + size);
     }
 }
