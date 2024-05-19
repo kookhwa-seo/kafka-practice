@@ -19,14 +19,12 @@ import java.util.Map;
 public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, PracticeDTO> consumerFactory() {
-
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         //컨슈머 그룹 아이디
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "practice-1");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-
         // 들어오는 record 를 객체로 받기 위한 deserializer
         JsonDeserializer<PracticeDTO> deserializer = new JsonDeserializer<>(PracticeDTO.class, false);
 
